@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Rediriger tout vers le dossier public si la requête vers un dossier n'existe pas
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?page=$1 [QSA,L]

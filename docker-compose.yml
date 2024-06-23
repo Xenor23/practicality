@@ -1,0 +1,48 @@
+version: "3.9"
+
+networks:
+  mysql-phpmyadmin:
+    name: mysql-phpmyadmin
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/24  # Subnet à utiliser pour les adresses IP
+        #172 Signifie que l'adresse est privée, c'est à prioriser car les adresses publiques sont limitées en nombres.
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: serveur_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: M.Duy13
+      MYSQL_DATABASE: practicality
+    ports:
+      - "3307:3306"
+    networks:
+      mysql-phpmyadmin:
+        ipv4_address: 172.18.0.101  # Adresse IP forcée sinon docker réutilisera toujours celle de ma localisation.
+    restart: always
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  phpmyadmin:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: phpmyadmin:latest
+    container_name: serveur_phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - "8888:80"
+    networks:
+      mysql-phpmyadmin:
+        ipv4_address : 172.18.0.102 #pas obligé cette ligne
+    restart: always
+    volumes:
+      - ./:/var/www/html/practicality
+
+volumes:
+  mysql-data:

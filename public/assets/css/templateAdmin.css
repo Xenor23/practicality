@@ -1,0 +1,125 @@
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #000;
+    --btn-color: #6f42c1;
+    --btn-hover-color: #563d7c;
+    --navbar-bg: #6f42c1;
+    --footer-bg: #f8f9fa;
+    --footer-border: #ddd;
+    --btn-text-light: #ffffff; /* Light color for button text */
+    --nav-link-color: #000;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Utilisation de toute la hauteur de la fenêtre */
+    margin: 0; /* Supprime les marges par défaut du body */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--btn-color);
+    border-radius: 20px;
+    border: 3px solid var(--bg-color);
+}
+
+.dark-mode {
+    --bg-color: #2c2c2c;
+    --text-color: #e0e0e0;
+    --btn-color: #bb86fc;
+    --btn-hover-color: #3700b3;
+    --navbar-bg: #3700b3;
+    --footer-bg: #2a2a2a;
+    --footer-border: #444;
+}
+
+
+.btn-custom-primary, .btn-custom-secondary {
+    background-color: var(--btn-color);
+    border-color: var(--btn-color);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--btn-text-light); /* Light color for button text */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-custom-primary:hover, .btn-custom-secondary:hover {
+    background-color: var(--btn-hover-color);
+    border-color: var(--btn-hover-color);
+    color: var(--btn-text-light); /* Ensure text remains light on hover */
+}
+
+.navbar-custom {
+    background-color: var(--navbar-bg);
+    padding: 15px 20px;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.navbar-brand:hover {
+    color: white;
+}
+
+.navbar-nav .nav-link {
+    color: var(--nav-link-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--btn-hover-color);
+}
+
+main {
+    flex: 1; /* Ajuste le contenu pour remplir l'espace restant */
+}
+
+.footer {
+    background-color: var(--footer-bg);
+    padding: 20px 0;
+    border-top: 1px solid var(--footer-border);
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s, border-color 0.3s;
+    flex-shrink: 0; /* Empêche le footer de rétrécir */
+    margin-top: auto; /* Garantit que le footer est toujours en bas */
+}
+
+.footer a {
+    color: var(--btn-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.modal-body {
+    max-height: calc(100vh - 200px); /* Adjust the value as needed */
+    overflow-y: auto;
+}
